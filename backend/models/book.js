@@ -8,7 +8,7 @@ const bookSchema = new mongoose.Schema({
   frontPageUrl: String,
   publicationDate: Date,
   category: String,
-  copies: Number,
+  user: { type: mongoose.Schema.ObjectId, ref: "users" },
   registerDate: { type: Date, default: Date.now },
   dbStatus: true,
 });
