@@ -10,7 +10,7 @@ const bookSchema = new mongoose.Schema({
   category: String,
   user: { type: mongoose.Schema.ObjectId, ref: "users" },
   registerDate: { type: Date, default: Date.now },
-  dbStatus: true,
+  dbStatus: { type: Boolean, default: true },
 });
 
 const book = mongoose.model("books", bookSchema);

@@ -3,6 +3,6 @@ import controller from "../controllers/role.js";
 
 const router = express.Router();
 
-router.post("/role/addRole", controller.addRole);
+router.post("/addRole", controller.registerRole);
 
 export default router;

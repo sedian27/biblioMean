@@ -19,4 +19,8 @@ app.use("/api/role", (req, res) => {
   res.send("hola mundo!");
 });
 
+app.use("/api", (req, res) => {
+  res.send("hola mundo!");
+});
+
 db.dbConnection();
