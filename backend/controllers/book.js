@@ -19,7 +19,7 @@ const registerBook = (req, res) => {
     !publicationDate ||
     !category
   )
-    return res.status(401).send({ message: "Bad" });
+    return res.status(401).send({ message: "Incomplete data" });
 
   const schema = new book({
     title,
@@ -33,9 +33,10 @@ const registerBook = (req, res) => {
 
   let result = schema.save();
 
-  if (!result) return res.status(500).send({ message: "Failed" });
+  if (!result)
+    return res.status(500).send({ message: "Failed to register book" });
 
-  return res.status(200).send({ result });  
+  return res.status(200).send({ result });
 };
 
 export default { registerBook };

@@ -1,6 +1,6 @@
 import role from "../models/role.js";
 
-const registerRole = async (req, res) => {
+const register = async (req, res) => {
   if (!req.body.name || !req.body.description)
     return res.status(400).send({ message: "Incomplete data" });
 
@@ -14,4 +14,4 @@ const registerRole = async (req, res) => {
   res.status(200).send({ result });
 };
 
-export default { registerRole };
+export default { register };
