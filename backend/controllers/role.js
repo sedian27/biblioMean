@@ -1,10 +1,12 @@
 import role from "../models/role.js";
 
 const registerRole = async (req, res) => {
-  if (!req.body.name || !req.body.description)
+  const { name, description } = req.body;
+
+  if (!name || !description)
     return res.status(400).send({ message: "Incomplete data" });
 
-  let schema = new role(({ name, description } = req.body));
+  let schema = new role({ name, description });
 
   let result = await schema.save();
 
@@ -14,4 +16,11 @@ const registerRole = async (req, res) => {
   res.status(200).send({ result });
 };
 
-export default { registerRole };
+const listRole = async (req, res) => {
+  const roles = await role.find({ name: new RegExp(req.params["name"]) });
+  return roles.length === 0
+    ? res.status(400).send({ message: "No search result" })
+    : res.status(200).send({ roles });
+};
+
+export default { registerRole, listRole };

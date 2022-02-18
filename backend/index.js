@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import db from "./db/db.js";
 import roleRoutes from "./routes/role.js";
+import userRoutes from "./routes/user.js";
 
 dotenv.config();
 
@@ -15,12 +16,7 @@ app.listen(process.env.PORT, () => {
   console.log("Backend server running on port: ", process.env.PORT);
 });
 
-app.use("/api/role", (req, res) => {
-  res.send("hola mundo!");
-});
-
-app.use("/api", (req, res) => {
-  res.send("hola mundo!");
-});
+app.use("/api/role", roleRoutes);
+app.use("/api/user", userRoutes);
 
 db.dbConnection();
