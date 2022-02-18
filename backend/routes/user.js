@@ -13,5 +13,6 @@ router.post(
   controller.registerUser
 );
 router.get("/listUser/:name?", controller.listUser);
+router.post("/login", controller.login);
 
 export default router;
