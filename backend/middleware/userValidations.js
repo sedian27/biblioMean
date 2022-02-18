@@ -9,6 +9,7 @@ const validData = (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password)
     return res.status(400).send({ message: "Incomplete Data" });
+  if (next) next();
 };
 
 const existingEmail = async (req, res, next) => {
@@ -17,7 +18,7 @@ const existingEmail = async (req, res, next) => {
   if (userFound)
     return res.status(400).send({ message: "Email already exists" });
 
-  next();
+  if (next) next();
 };
 
 export default { validations };

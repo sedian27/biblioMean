@@ -5,6 +5,6 @@ import bookMdd from "../middleware/bookValidation.js";
 const router = express.Router();
 
 router.post("/registerBook", bookMdd.validations, controller.registerBook);
-router.get("/listBook", controller.listBook);
+router.get("/listBook/:name?", controller.listBook);
 
 export default router;

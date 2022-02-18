@@ -1,8 +1,8 @@
 import model from "../models/role.js";
 
 const validations = (req, res, next) => {
-  validateData();
-  validRole();
+  validateData(req, res);
+  validRole(req, res, next);
 };
 
 const validateData = (req, res, next) => {
@@ -10,6 +10,8 @@ const validateData = (req, res, next) => {
 
   if (!name || !description)
     return res.status(400).send({ message: "Incomplete data" });
+
+  if (next) next();
 };
 
 const validRole = async (req, res, next) => {
@@ -20,7 +22,7 @@ const validRole = async (req, res, next) => {
 
   req.body.role = role._id;
 
-  next();
+  if (next) next();
 };
 
 export default { validRole, validations };
