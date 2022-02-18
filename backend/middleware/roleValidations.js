@@ -6,9 +6,7 @@ const validations = (req, res, next) => {
 };
 
 const validateData = (req, res, next) => {
-  const { name, description } = req.body;
-
-  if (!name || !description)
+  if (!req.body.name || !req.body.description)
     return res.status(400).send({ message: "Incomplete data" });
 
   if (next) next();

@@ -6,8 +6,7 @@ const validations = (req, res, next) => {
 };
 
 const validData = (req, res) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password)
+  if (!req.body.name || !req.body.email || !req.body.password)
     return res.status(400).send({ message: "Incomplete Data" });
   if (next) next();
 };
