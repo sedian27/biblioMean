@@ -1,8 +1,8 @@
 import express from "express";
 import controller from "../controllers/user.js";
 
-import userMdd from "../middleware/validUser.js";
-import roleMdd from "../middleware/validRole.js";
+import userMdd from "../middleware/userValidations.js";
+import roleMdd from "../middleware/roleValidations.js";
 
 const router = express.Router();
 
