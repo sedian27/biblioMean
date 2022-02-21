@@ -21,4 +21,22 @@ const listRole = async (req, res) => {
     : res.status(200).send({ roles });
 };
 
-export default { registerRole, listRole };
+const updateRole = async (req, res) => {
+  const updated = await role.findByIdAndUpdate(req.body.id, {
+    name: req.body.name,
+    description: req.body.description,
+  });
+
+  return !updated
+    ? res.status(500).send({ message: "Error editing role" })
+    : res.status(200).send({ message: "Role updated" });
+};
+
+const deleteRole = async (req, res) => {
+  const deleted = await role.findByIdAndDelete(req.params["_id"]);
+  return !deleted
+    ? res.status(500).send({ message: "Error deleting role" })
+    : res.status(200).send({ message: "Role deleted" });
+};
+
+export default { registerRole, listRole, updateRole, deleteRole };
