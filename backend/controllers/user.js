@@ -92,6 +92,9 @@ const login = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+  if (!req.body._id)
+    return res.status(400).send({ message: "Incomplete Data" });
+
   let pass = "";
 
   if (!req.body.password) {
@@ -113,6 +116,9 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
+  if (!req.params["_id"])
+    return res.status(400).send({ message: "Incomplete data" });
+
   const deleted = await model.findByIdAndUpdate(req.params["_id"], {
     dbStatus: false,
   });

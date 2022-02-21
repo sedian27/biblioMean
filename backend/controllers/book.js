@@ -37,6 +37,9 @@ const listBookLibrarian = async (req, res) => {
 };
 
 const updateBook = async (req, res) => {
+  if (!req.body._id)
+    return res.status(400).send({ message: "Incomplete Data" });
+
   const updated = await book.findByIdAndUpdate(req.body._id, {
     title: req.body.title,
     description: req.body.description,
@@ -55,6 +58,9 @@ const updateBook = async (req, res) => {
 };
 
 const deleteBook = async (req, res) => {
+  if (!req.params["_id"])
+    return res.status(400).send({ message: "Incomplete data" });
+
   const deleted = await book.findByIdAndUpdate(req.params["_id"], {
     dbStatus: false,
   });

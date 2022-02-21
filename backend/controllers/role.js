@@ -22,6 +22,9 @@ const listRole = async (req, res) => {
 };
 
 const updateRole = async (req, res) => {
+  if (!req.body._id)
+    return res.status(400).send({ message: "Incomplete data" });
+
   const updated = await role.findByIdAndUpdate(req.body._id, {
     name: req.body.name,
     description: req.body.description,
@@ -33,6 +36,9 @@ const updateRole = async (req, res) => {
 };
 
 const deleteRole = async (req, res) => {
+  if (!req.params["_id"])
+    return res.status(400).send({ message: "Incomplete data" });
+
   const deleted = await role.findByIdAndDelete(req.params["_id"]);
   return !deleted
     ? res.status(500).send({ message: "Error deleting role" })

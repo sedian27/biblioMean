@@ -14,7 +14,7 @@ router.post(
 );
 router.get("/listUser/:name?", controller.listUser);
 router.get("/listUserAdmin/:name?", controller.listUserAdmin);
-router.put("/updateUser", controller.updateUser);
+router.put("/updateUser", userMdd.validData, controller.updateUser);
 router.put("/deleteUser/:_id", controller.deleteUser);
 
 export default router;
