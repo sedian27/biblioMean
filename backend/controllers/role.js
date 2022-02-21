@@ -22,7 +22,7 @@ const listRole = async (req, res) => {
 };
 
 const updateRole = async (req, res) => {
-  const updated = await role.findByIdAndUpdate(req.body.id, {
+  const updated = await role.findByIdAndUpdate(req.body._id, {
     name: req.body.name,
     description: req.body.description,
   });
