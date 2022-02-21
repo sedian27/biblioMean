@@ -1,9 +1,10 @@
 import role from "../models/role.js";
 
 const registerRole = async (req, res) => {
-  const { name, description } = req.body;
-
-  let schema = new role({ name, description });
+  let schema = new role({
+    name: req.body.name,
+    description: req.body.description,
+  });
 
   let result = await schema.save();
 

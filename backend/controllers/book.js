@@ -1,24 +1,14 @@
 import book from "../models/book.js";
 
 const registerBook = async (req, res) => {
-  let {
-    title,
-    description,
-    pages,
-    author,
-    frontPageUrl,
-    publicationDate,
-    category,
-  } = req.body;
-
   const schema = new book({
-    title,
-    description,
-    pages,
-    author,
-    frontPageUrl,
-    publicationDate,
-    category,
+    title: req.body.title,
+    description: req.body.description,
+    pager: req.body.pages,
+    author: req.body.author,
+    frontPageUrl: req.body.frontPageUrl,
+    publicationDate: req.body.publicationDate,
+    category: req.body.category,
   });
 
   let result = await schema.save();

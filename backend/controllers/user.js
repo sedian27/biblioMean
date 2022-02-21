@@ -53,8 +53,8 @@ const listUser = async (req, res) => {
 const login = async (req, res) => {
   const userLogin = await model.findOne({ email: req.body.email });
 
-  if (!userLogin)
-    return res.status(400).send({ message: "Wrong email or password" });
+  // if (!userLogin)
+  //   return res.status(400).send({ message: "Wrong email or password" });
 
   if (!userLogin.dbStatus)
     return res.status(400).send({ message: "Use not found" });
