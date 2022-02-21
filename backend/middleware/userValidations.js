@@ -14,11 +14,8 @@ const validData = (req, res) => {
 const existingEmail = async (req, res, next) => {
   const userFound = await model.findOne({ email: req.body.email });
 
-  if (userFound && req.body.user)
+  if (userFound)
     return res.status(400).send({ message: "Email already exists" });
-
-  if (!userFound && !req.body.user)
-    return res.status(400).send({ message: "Wrong email or password" });
 
   if (next) next();
 };
