@@ -8,7 +8,8 @@ const router = express.Router();
 
 router.post(
   "/registerUser",
-  userMdd.validations,
+  userMdd.validData,
+  userMdd.existingEmail,
   roleMdd.validRole,
   controller.registerUser
 );
