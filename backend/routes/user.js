@@ -13,6 +13,7 @@ router.post(
   roleMdd.validRole,
   controller.registerUser
 );
+router.post("/login", controller.login);
 router.get("/list/:name?", controller.listUser);
 router.get("/listUsers/:name?", controller.listUserAdmin);
 router.put("/update", userMdd.validData, controller.updateUser);

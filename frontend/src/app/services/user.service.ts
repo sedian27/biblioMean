@@ -8,9 +8,13 @@ export class UserService {
   private env: string;
   constructor(private _http: HttpClient) {
     this.env = environment.APP_URL;
-  }
+}
 
   registerUser(user: any) {
     return this._http.post<any>(this.env + 'user/register', user);
+  }
+
+  login(user: any) {
+    return this._http.post<any>(this.env + 'user/login', user);
   }
 }

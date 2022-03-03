@@ -20,6 +20,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './home/login/login.component';
+import { ListBooksComponent } from './library/list-books/list-books.component';
+import { SaveBookComponent } from './library/save-book/save-book.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { LoginComponent } from './home/login/login.component';
     FooterComponent,
     RegisterComponent,
     LoginComponent,
+    ListBooksComponent,
+    SaveBookComponent,
   ],
   imports: [
     BrowserModule,

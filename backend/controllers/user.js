@@ -68,11 +68,12 @@ const login = async (req, res) => {
     return res.status(400).send({ message: "Wrong email or password" });
 
   if (!userLogin.dbStatus)
-    return res.status(400).send({ message: "Use not found" });
+    return res.status(400).send({ message: "User not found" });
 
   const passHash = await bcrypt.compare(req.body.password, userLogin.password);
 
-  if (!passHash) return res.status(400).send({ message: "Password not found" });
+  if (!passHash)
+    return res.status(400).send({ message: "Wrong email or password" });
 
   try {
     return res.status(200).json({
@@ -87,7 +88,7 @@ const login = async (req, res) => {
       ),
     });
   } catch (e) {
-    return res.status(500).send({ message: "Register error" });
+    return res.status(500).send({ message: "Login error" });
   }
 };
 
