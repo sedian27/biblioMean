@@ -10,7 +10,7 @@ const validData = (req, res, next) => {
 const existingEmail = async (req, res, next) => {
   const userFound = await model.findOne({ email: req.body.email });
 
-  if (userFound)
+  if (userFound && req.body._id != userFound._id)
     return res.status(400).send({ message: "Email already exists" });
 
   next();
