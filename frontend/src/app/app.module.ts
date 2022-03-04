@@ -8,7 +8,7 @@ import { FooterComponent } from './home/footer/footer.component';
 import { RegisterComponent } from './home/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,6 +23,7 @@ import { LoginComponent } from './home/login/login.component';
 import { ListBooksComponent } from './library/list-books/list-books.component';
 import { SaveBookComponent } from './library/save-book/save-book.component';
 import { ListUserComponent } from './admin/list-user/list-user.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,15 @@ import { ListUserComponent } from './admin/list-user/list-user.component';
     MatInputModule,
     MatSnackBarModule,
   ],
-  providers: [UserService, AuthGuard],
+  providers: [
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+    AuthGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
     this.loginData = {};
   }
 
+  ngOnInit(): void {}
+
   login() {
     if (!this.loginData.email || !this.loginData.password) {
       this.message = 'Failed process: Incomplete data';
@@ -53,6 +55,4 @@ export class LoginComponent implements OnInit {
       panelClass: ['styleSnackBarError'],
     });
   }
-
-  ngOnInit(): void {}
 }
