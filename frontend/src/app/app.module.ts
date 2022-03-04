@@ -22,6 +22,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './home/login/login.component';
 import { ListBooksComponent } from './library/list-books/list-books.component';
 import { SaveBookComponent } from './library/save-book/save-book.component';
+import { ListUserComponent } from './admin/list-user/list-user.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SaveBookComponent } from './library/save-book/save-book.component';
     LoginComponent,
     ListBooksComponent,
     SaveBookComponent,
+    ListUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('token', v.token);
           this._router.navigate(['/listBooks']);
           this.message = 'Successfull user registration';
-          this.openSnackBarSuccessful();
+          this.openSnackBarSuccessfull();
         },
         error: (e) => {
           this.message = e.error.message;
@@ -50,12 +50,12 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  openSnackBarSuccessful() {
+  openSnackBarSuccessfull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: this.durationInSeconds,
-      panelClass: ['styleSnackBarSuccessful'],
+      panelClass: ['styleSnackBarSuccessfull'],
     });
   }
 
